@@ -32,6 +32,7 @@ RSpec.describe Facility do
 
   describe '#can perform services' do 
     it 'can perform services it offers' do
+      @facility.add_service('Vehicle Registration')
       @facility.register_vehicle(@cruz)
       expect(@facility.registered_vehicles).to contain_exactly(@cruz)
       expect(@cruz.registration_date).to be_an_instance_of(Date)
@@ -41,6 +42,7 @@ RSpec.describe Facility do
 
   describe '#can collect fees' do 
     it 'can collect fees' do 
+      @facility.add_service('Vehicle Registration')
       @facility.register_vehicle(@cruz)
       expect(@facility.collected_fees).to eq(100)
       @facility.register_vehicle(@bolt)
