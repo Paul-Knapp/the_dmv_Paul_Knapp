@@ -52,7 +52,7 @@ class Facility
     end
   end
 
-  def administer_road_test
+  def administer_road_test(registrant)
     if @services.include?('Road Test') == false
       false
     else
