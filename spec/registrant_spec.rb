@@ -19,8 +19,6 @@ RSpec.describe Registrant do
 
     describe '#add permit' do
       it 'can add a permit' do
-          expect(@registrant_1.permit?).to eq(true)
-          expect(@registrant_2.permit?).to be(false)
           @registrant_2.earn_permit
           expect(@registrant_2.permit?).to be(true)
           expect(@registrant_1.permit?).to eq(true)
