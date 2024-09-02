@@ -22,11 +22,13 @@ class Facility
   end
 
   def register_vehicle(vehicle)
-    @registered_vehicles << vehicle
-    vehicle.registration_date = Date.today
     if @services.include?('Vehicle Registration') == false
       nil
-   elsif vehicle.antique? == true
+    else
+      @registered_vehicles << vehicle
+      vehicle.registration_date = Date.today
+    end
+   if vehicle.antique? == true
       vehicle.plate_type = :antique
       @collected_fees += 25
    elsif vehicle.electric_vehicle? == true
@@ -36,5 +38,13 @@ class Facility
       vehicle.plate_type = :regular
       @collected_fees += 100
    end
+  end
+
+  def administer_written_test(registrant)
+    if @services.include?('Written Test') == false
+      false
+    else
+      registrant.license_data[:written] = true
+    end
   end
 end
