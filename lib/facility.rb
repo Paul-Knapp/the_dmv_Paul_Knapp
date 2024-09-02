@@ -43,8 +43,20 @@ class Facility
   def administer_written_test(registrant)
     if @services.include?('Written Test') == false
       false
+    elsif registrant.permit == false
+      false
+    elsif registrant.age < 16
+      false
     else
-      registrant.license_data[:written] = true
+        registrant.license_data[:written] = true
+    end
+  end
+
+  def administer_road_test
+    if @services.include?('Road Test') == false
+      false
+    else
+      registrant.license_data[:license] = true
     end
   end
 end
