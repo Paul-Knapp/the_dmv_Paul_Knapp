@@ -13,8 +13,10 @@ RSpec.describe VehicleFactory do
     end
 
     describe '#it can create vehicles' do
-        vehicles = @factory_1.create_vehicles(@wa_ev_registrations)
-        expect(vehicles).to all (be_an_instance_of)(Vehicle)
-        expect(vehicles[2]).not_to eq(vehicles[0])
+        it '#creates instances of the vehicle class' do
+            vehicles = @factory_1.create_vehicles(@wa_ev_registrations)
+            expect(vehicles).to all(be_an_instance_of(Vehicle))
+            expect(vehicles[2]).not_to eq(vehicles[0])
+        end
     end
 end
