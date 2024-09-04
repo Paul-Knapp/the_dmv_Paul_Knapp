@@ -23,6 +23,8 @@ RSpec.describe Facility_Factory do
             expect(@co_dmvs[0]).not_to eq (@co_dmvs[4])
             expect(@ny_dmvs).to all(be_an_instance_of (Facility))
             expect(@ny_dmvs[0]).not_to eq (@ny_dmvs[2])
+            expect(@mo_dmvs).to all(be_an_instance_of (Facility))
+            expect(@mo_dmvs[0]).not_to eq (@mo_dmvs[2])
         end
     end
 
@@ -32,6 +34,9 @@ RSpec.describe Facility_Factory do
             expect(@co_dmvs[3].name).not_to eq ("DMV Tremont Branch")
             expect(@ny_dmvs[0].name).to eq ("HUDSON")
             expect(@co_dmvs[3].name).not_to eq ("DMV Tremont Branch")
+            expect(@mo_dmvs[0].name).to eq ("OAKVILLE")
+            expect(@mo_dmvs[3].name).not_to eq ("OAKVILLE")
+
         end
 
         it 'can import phone numbers' do
