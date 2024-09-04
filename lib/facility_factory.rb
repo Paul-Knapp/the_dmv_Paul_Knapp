@@ -2,7 +2,7 @@ class Facility_Factory
     def create_facilities(sources)
       sources.map do |source|
           facility = Facility.new({
-            name: source[:dmv_office] || source[:office_name],
+            name: source[:dmv_office] || source[:office_name] || source[:name],
             phone: source[:phone] || source[:public_phone_number],
             address: address(source)})
       end
