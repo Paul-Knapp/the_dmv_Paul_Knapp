@@ -2,8 +2,8 @@ require 'spec_helper'
 
 RSpec.describe Facility do
   before(:each) do
-    @registrant_1 = Registrant.new('Penny', 16 )
-    @registrant_2 = Registrant.new('Bruce', 14, true )
+    @registrant_1 = Registrant.new('Penny', 16, true)
+    @registrant_2 = Registrant.new('Bruce', 14, true)
     @facility_1 = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
     @facility_2 = Facility.new({name: 'DMV Northeast Branch', address: '4685 Peoria Street Suite 101 Denver CO 80239', phone: '(720) 865-4600'})
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
@@ -44,7 +44,7 @@ RSpec.describe Facility do
     it 'can administer the written test' do
       @facility_1.add_service('Written Test')
       @facility_1.administer_written_test(@registrant_1)
-      expect(@registrant_1.license_data).to eq({:written => false, :license => false, :renewed => false})
+      expect(@registrant_1.license_data).to eq({:written => true, :license => false, :renewed => false})
       @registrant_1.earn_permit
       @facility_1.administer_written_test(@registrant_1)
       expect(@registrant_1.license_data).to eq({:written => true, :license => false, :renewed => false})
@@ -53,9 +53,11 @@ RSpec.describe Facility do
     end
 
     it 'can administer the road test' do
+      @facility_1.add_service('Written Test')
+      @facility_1.administer_written_test(@registrant_1)
       @facility_1.add_service('Road Test')
       @facility_1.administer_road_test(@registrant_1)
-      expect(@registrant_1.license_data).to eq({:written => false, :license => true, :renewed => false})
+      expect(@registrant_1.license_data).to eq({:written => true, :license => true, :renewed => false})
     end
 
     it 'can renew a drivers license' do
@@ -63,9 +65,11 @@ RSpec.describe Facility do
     @facility_1.add_service('Road Test')
     @facility_1.renew_drivers_license(@registrant_1)
     expect(@registrant_1.license_data).to eq({:written => false, :license => false, :renewed => false})
+    @facility_1.add_service('Written Test')
+    @facility_1.administer_written_test(@registrant_1)
     @facility_1.administer_road_test(@registrant_1)
     @facility_1.renew_drivers_license(@registrant_1)
-    expect(@registrant_1.license_data).to eq({:written => false, :license => true, :renewed => true})
+    expect(@registrant_1.license_data).to eq({:written => true, :license => true, :renewed => true})
     end
   end
 

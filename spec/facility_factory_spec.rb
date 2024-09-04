@@ -33,7 +33,7 @@ RSpec.describe Facility_Factory do
             expect(@co_dmvs[0].name).to eq ("DMV Tremont Branch")
             expect(@co_dmvs[3].name).not_to eq ("DMV Tremont Branch")
             expect(@ny_dmvs[0].name).to eq ("HUDSON")
-            expect(@co_dmvs[3].name).not_to eq ("DMV Tremont Branch")
+            expect(@ny_dmvs[3].name).not_to eq ("DMV Tremont Branch")
             expect(@mo_dmvs[0].name).to eq ("OAKVILLE")
             expect(@mo_dmvs[3].name).not_to eq ("OAKVILLE")
 
