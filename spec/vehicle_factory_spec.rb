@@ -15,12 +15,12 @@ RSpec.describe VehicleFactory do
 
     describe '#it can create vehicles' do
         it 'creates instances of the vehicle class' do
-            expect(@vehicles).to all(be_an_instance_of(Vehicle))
-            expect(@vehicles[2]).not_to eq(@vehicles[0])
+            expect(@vehicles).to all (be_an_instance_of(Vehicle))
+            expect(@vehicles[2]).not_to eq (@vehicles[0])
         end
     end
 
-    describe '#it transfers data correctly' do
+    describe '#it imports data correctly' do
         it 'can import the vin' do 
             expect(@vehicles[0].vin.length).to be (10)
             expect(@vehicles[10].vin.length).to be (10)
