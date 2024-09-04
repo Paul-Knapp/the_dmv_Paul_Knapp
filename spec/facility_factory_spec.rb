@@ -41,10 +41,14 @@ RSpec.describe Facility_Factory do
 
         it 'can import phone numbers' do
             expect(@co_dmvs[0].phone).to eq ('(720) 865-4600')
+            expect(@ny_dmvs[0].phone).to eq ('5188283350')
+            expect(@mo_dmvs[0].phone).to eq ('(314) 887-1050')
         end
 
         it 'can import addresses' do
             expect(@co_dmvs[0].address).to eq('2855 Tremont Place Suite 118 Denver CO 80205')
+            expect(@ny_dmvs[0].address).to eq('560 WARREN STREET HUDSON NY 12534')
+            expect(@mo_dmvs[0].address).to eq('3164 TELEGRAPH ROAD ST LOUIS MO 63125')
         end
     end
 end
