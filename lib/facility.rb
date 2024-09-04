@@ -18,11 +18,11 @@ class Facility
   end
 
   def add_service(service)
-    @services << service
+    @services << service.downcase
   end
 
   def register_vehicle(vehicle)
-    if @services.include?('Vehicle Registration') == false
+    if @services.include?('vehicle registration') == false && @services.include?('registration') == false
       nil
     else
       @registered_vehicles << vehicle
@@ -41,7 +41,7 @@ class Facility
   end
 
   def administer_written_test(registrant)
-    if @services.include?('Written Test') == false
+    if @services.include?('written test') == false
       false
     elsif registrant.permit == false
       false
@@ -53,7 +53,7 @@ class Facility
   end
 
   def administer_road_test(registrant)
-    if @services.include?('Road Test') == false
+    if @services.include?('road test') == false
       false
     else
       registrant.license_data[:license] = true
@@ -61,7 +61,7 @@ class Facility
   end
 
   def renew_drivers_license(registrant)
-    if @services.include?('Renew License') == false
+    if @services.include?('renew license') == false
       false
     elsif registrant.license_data[:license] == false
       false
